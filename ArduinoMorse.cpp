@@ -48,8 +48,17 @@ void ArduinoMorse::dash() {
 
 void ArduinoMorse::process(char* message) {
   for(char* it = message; *it; ++it) {
-    char c = toupper(*it);
-    switch(c) {
+    ArduinoMorse::processChar(*it);
+    delay(CHAR_BREAK);
+    if (_dbg) {
+      _dbgSerial->print(' ');
+    }
+  }
+}
+
+void ArduinoMorse::processChar(char c) {
+  c = toupper(c);
+  switch(c) {
       case 'A':
         if (_dbg) { _dbgSerial->print("[A]"); }
         ArduinoMorse::dot();
@@ -153,7 +162,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dot();
         ArduinoMorse::dash();
-	break;
+  break;
       case 'R':
         if (_dbg) { _dbgSerial->print("[R]"); }
         ArduinoMorse::dot();
@@ -217,7 +226,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dash();
         ArduinoMorse::dash();
-	break;
+  break;
       case '1':
         if (_dbg) { _dbgSerial->print("[1]"); }
         ArduinoMorse::dot();
@@ -225,7 +234,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dash();
         ArduinoMorse::dash();
-	break;
+  break;
       case '2':
         if (_dbg) { _dbgSerial->print("[2]"); }
         ArduinoMorse::dot();
@@ -233,7 +242,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dash();
         ArduinoMorse::dash();
-	break;
+  break;
       case '3':
         if (_dbg) { _dbgSerial->print("[3]"); }
         ArduinoMorse::dot();
@@ -241,7 +250,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dash();
         ArduinoMorse::dash();
-	break;
+  break;
       case '4':
         if (_dbg) { _dbgSerial->print("[4]"); }
         ArduinoMorse::dot();
@@ -249,7 +258,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dot();
         ArduinoMorse::dash();
-	break;
+  break;
       case '5':
         if (_dbg) { _dbgSerial->print("[5]"); }
         ArduinoMorse::dot();
@@ -257,7 +266,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dot();
         ArduinoMorse::dot();
-	break;
+  break;
       case '6':
         if (_dbg) { _dbgSerial->print("[6]"); }
         ArduinoMorse::dash();
@@ -265,7 +274,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dot();
         ArduinoMorse::dot();
-	break;
+  break;
       case '7':
         if (_dbg) { _dbgSerial->print("[7]"); }
         ArduinoMorse::dash();
@@ -273,7 +282,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dot();
         ArduinoMorse::dot();
-	break;
+  break;
       case '8':
         if (_dbg) { _dbgSerial->print("[8]"); }
         ArduinoMorse::dash();
@@ -281,7 +290,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dot();
         ArduinoMorse::dot();
-	break;
+  break;
       case '9':
         if (_dbg) { _dbgSerial->print("[9]"); }
         ArduinoMorse::dash();
@@ -289,7 +298,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dash();
         ArduinoMorse::dot();
-	break;
+  break;
       case '.':
         if (_dbg) { _dbgSerial->print("[.]"); }
         ArduinoMorse::dot();
@@ -298,7 +307,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dot();
         ArduinoMorse::dash();
-	break;
+  break;
       case ',':
         if (_dbg) { _dbgSerial->print("[,]"); }
         ArduinoMorse::dash();
@@ -307,7 +316,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dash();
         ArduinoMorse::dash();
-	break;
+  break;
       case ':':
         if (_dbg) { _dbgSerial->print("[:]"); }
         ArduinoMorse::dash();
@@ -316,7 +325,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dot();
         ArduinoMorse::dot();
-	break;
+  break;
       case '?':
         if (_dbg) { _dbgSerial->print("[?]"); }
         ArduinoMorse::dot();
@@ -325,7 +334,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dot();
         ArduinoMorse::dot();
-	break;
+  break;
       case '\'':
         if (_dbg) { _dbgSerial->print("[']"); }
         ArduinoMorse::dot();
@@ -334,7 +343,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dash();
         ArduinoMorse::dot();
-	break;
+  break;
       case '-':
         if (_dbg) { _dbgSerial->print("[-]"); }
         ArduinoMorse::dash();
@@ -343,7 +352,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dot();
         ArduinoMorse::dash();
-	break;
+  break;
       case '/':
         if (_dbg) { _dbgSerial->print("[/]"); }
         ArduinoMorse::dash();
@@ -351,7 +360,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dash();
         ArduinoMorse::dot();
-	break;
+  break;
       case '(':
         if (_dbg) { _dbgSerial->print("[(]"); }
       case ')':
@@ -362,7 +371,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dash();
         ArduinoMorse::dot();
         ArduinoMorse::dash();
-	break;
+  break;
       case '"':
         if (_dbg) { _dbgSerial->print("[']"); }
         ArduinoMorse::dot();
@@ -371,7 +380,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dash();
         ArduinoMorse::dot();
-	break;
+  break;
       case '@':
         if (_dbg) { _dbgSerial->print("[@]"); }
         ArduinoMorse::dot();
@@ -380,7 +389,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dash();
         ArduinoMorse::dot();
-	break;
+  break;
       case '=':
         if (_dbg) { _dbgSerial->print("[=]"); }
         ArduinoMorse::dash();
@@ -388,7 +397,7 @@ void ArduinoMorse::process(char* message) {
         ArduinoMorse::dot();
         ArduinoMorse::dot();
         ArduinoMorse::dash();
-	break;
+  break;
       default:
         delay(WORD_BREAK);
         if (_dbg) {
@@ -396,9 +405,5 @@ void ArduinoMorse::process(char* message) {
         }
         break;
     }
-    delay(CHAR_BREAK);
-    if (_dbg) {
-      _dbgSerial->print(' ');
-    }
-  }
 }
+

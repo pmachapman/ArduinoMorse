@@ -12,6 +12,7 @@ class ArduinoMorse {
     ArduinoMorse(int pin);
     ArduinoMorse(int pin, Stream &dbgSerial);
     void process(char* message);
+    void processChar(char c);
     void dot();
     void dash();
   private:
